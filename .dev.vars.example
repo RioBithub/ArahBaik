@@ -1,0 +1,4 @@
+# Copy to .dev.vars (ignored by Git). Both values are public browser configuration.
+SUPABASE_URL="https://YOUR_PROJECT.supabase.co"
+SUPABASE_PUBLISHABLE_KEY="sb_publishable_REPLACE_ME"
+# Legacy Supabase anon JWT is also supported. Never use service_role or secret keys.
