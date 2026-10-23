@@ -170,13 +170,13 @@ export function Layout({ children }: { children: ReactNode }) {
       <section className="join-strip">
         <div className="container">
           <div>
-            <span className="eyebrow light">SATU LANGKAH LAGI</span>
+            <span className="eyebrow">SATU LANGKAH LAGI</span>
             <h2>
               Kebaikan selalu punya <em>jalan.</em>
             </h2>
             <p>Bantu tempat yang dekat dengan hatimu, mulai hari ini.</p>
           </div>
-          <Link className="btn lime" to="/jelajahi">
+          <Link className="btn" to="/jelajahi">
             Temukan tujuan baikmu <Icon name="northeast" />
           </Link>
         </div>
@@ -189,14 +189,6 @@ export function Layout({ children }: { children: ReactNode }) {
               Mempertemukan niat baik dengan tempat yang membutuhkan. Donasi
               langsung ke penerima.
             </p>
-            <div className="team-credit">
-              <img src="/assets/axura-team.webp" alt="Logo Axura Team" />
-              <span>
-                Dibangun bersama
-                <br />
-                <b>Tim Axura & Seismiks</b>
-              </span>
-            </div>
           </div>
           <div>
             <b>Jelajahi kebaikan</b>
@@ -220,6 +212,23 @@ export function Layout({ children }: { children: ReactNode }) {
             </Link>
             {admin && <Link to="/admin">Ruang admin</Link>}
           </div>
+        </div>
+        <div className="team-credit">
+          <img
+            src="/assets/axura-team.webp"
+            alt="Logo Axura Team"
+            width="132"
+            height="132"
+            loading="lazy"
+          />
+          <div className="team-credit-copy">
+            <span>Dikembangkan oleh</span>
+            <b>Axura Team</b>
+            <span>Berkolaborasi dengan Seismiks</span>
+          </div>
+          <Link className="text-arrow team-credit-link" to="/tentang">
+            Kenali tim di balik ArahBaik <Icon name="northeast" size={18} />
+          </Link>
         </div>
         <div className="footer-bottom">
           <span>

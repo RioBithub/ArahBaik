@@ -289,7 +289,13 @@ export function Home() {
             Kenali cerita ArahBaik <Icon name="northeast" />
           </Link>
           <div className="mini-brand">
-            <img src="/assets/axura-team.webp" alt="Axura Team" />
+            <img
+              src="/assets/axura-team.webp"
+              alt="Axura Team"
+              width="100"
+              height="100"
+              loading="lazy"
+            />
             <span>
               Sebuah inisiatif sosial
               <br />
@@ -586,7 +592,7 @@ export function About() {
             <span>TECHNOLOGY WITH PURPOSE</span>
           </div>
           <div>
-            <span className="eyebrow light">DIBANGUN OLEH TIM AXURA</span>
+            <span className="eyebrow">DIBANGUN OLEH TIM AXURA</span>
             <h2>
               Kode yang bekerja.
               <br />
