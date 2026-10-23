@@ -4,6 +4,8 @@ Direktori kebaikan untuk masjid, panti, dan komunitas. Pengguna menemukan profil
 
 **React + TypeScript + Vite · Cloudflare Workers API & Static Assets · Supabase Auth, Postgres, Storage.** Branding Axura Team dan kredit kolaborasi Seismiks disertakan.
 
+Versi desain terbaru merapikan layout HP/tablet, warna, ukuran teks, kartu, dan form. [Lihat hasil pemeriksaan responsivitas](docs/ui-review.md) atau [cara menerapkan update pada website aktif](docs/updating.md).
+
 ## Yang sudah diimplementasikan
 
 - Beranda responsif dengan animasi ringan, panduan, FAQ pencarian, cerita tim, serta privasi.
@@ -85,6 +87,8 @@ Alternatif deployment GitHub: workflow **Deploy Cloudflare Workers** hanya dijal
 Untuk Cloudflare Workers Builds yang terhubung langsung ke repo: build command `npm ci && npm run check`; deploy command `npx wrangler deploy`; masukkan dua konfigurasi Supabase pada Worker Settings → Variables and Secrets. Tidak ada variabel `VITE_*` atau build-time secret yang dibutuhkan.
 
 ## Verifikasi
+
+Untuk aplikasi yang sudah aktif, baca [panduan update tanpa instal ulang](docs/updating.md). Perubahan desain tidak memerlukan migrasi database baru. Konfigurasi Wrangler mempertahankan variabel runtime yang sudah diatur di dashboard Cloudflare.
 
 ```bash
 npm run check

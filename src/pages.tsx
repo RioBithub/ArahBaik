@@ -12,12 +12,10 @@ export function Home() {
             <span className="live-dot" /> SEBUAH RUANG UNTUK BERBUAT BAIK
           </span>
           <h1>
-            Kebaikanmu,
-            <br />
-            temukan
-            <br />
-            <em>arahnya.</em>
-            <span className="hero-spark">✳</span>
+            <span>Kebaikanmu,</span>
+            <span>
+              temukan <em>arahnya.</em>
+            </span>
           </h1>
           <p>
             Di dekat kita, selalu ada yang bisa dibantu. Temukan masjid, panti,
@@ -46,57 +44,64 @@ export function Home() {
           </div>
         </div>
         <div className="hero-visual">
-          <div className="hero-orbit" />
-          <div className="hero-photo">
-            <img
-              src="/assets/mosque.webp"
-              alt="Masjid dengan suasana hangat saat senja"
-              fetchPriority="high"
-            />
-            <div className="photo-caption">
-              <span>BERAWAL DARI YANG DEKAT</span>
-              <b>
-                Satu niat baik.
-                <br />
-                Banyak kemungkinan.
-              </b>
+          <div className="hero-gallery">
+            <figure className="hero-photo">
+              <img
+                src="/assets/mosque.webp"
+                alt="Masjid dengan suasana hangat saat senja"
+                fetchPriority="high"
+              />
+              <figcaption className="photo-caption">
+                <span>BERAWAL DARI YANG DEKAT</span>
+                <b>
+                  Satu niat baik.
+                  <br />
+                  Banyak kemungkinan.
+                </b>
+              </figcaption>
+            </figure>
+            <div className="hero-side">
+              <div className="hero-mark" aria-hidden="true">
+                <Icon name="northeast" size={42} />
+                <span>
+                  Mulai dari
+                  <br />
+                  niat baik.
+                </span>
+              </div>
+              <figure className="hero-small">
+                <img
+                  src="/assets/children.webp"
+                  alt="Anak-anak berkegiatan bersama"
+                />
+                <figcaption>
+                  Untuk senyum
+                  <br />
+                  yang terus tumbuh.
+                </figcaption>
+              </figure>
             </div>
           </div>
-          <div className="hero-small">
-            <img
-              src="/assets/children.webp"
-              alt="Anak-anak berkegiatan bersama"
-            />
-            <span>
-              Untuk senyum
-              <br />
-              yang terus tumbuh.
-            </span>
-          </div>
-          <div className="float-card float-one">
-            <span className="circle lime">
-              <Icon name="heart" size={23} />
-            </span>
-            <div>
-              <b>Tanpa perantara dana</b>
-              <small>QRIS langsung milik penerima</small>
+          <div className="hero-facts">
+            <div className="hero-fact">
+              <span className="circle lime">
+                <Icon name="heart" size={22} />
+              </span>
+              <div>
+                <b>Langsung ke penerima</b>
+                <small>Melalui QRIS milik mereka</small>
+              </div>
             </div>
-            <Icon name="northeast" size={17} />
-          </div>
-          <div className="float-card float-two">
-            <span className="circle forest">
-              <Icon name="shield" />
-            </span>
-            <div>
-              <b>Lebih jelas, lebih tenang</b>
-              <small>Kenali tempat sebelum berbagi</small>
+            <div className="hero-fact">
+              <span className="circle soft">
+                <Icon name="shield" size={22} />
+              </span>
+              <div>
+                <b>Kenali sebelum berbagi</b>
+                <small>Cerita dan kebutuhan lebih jelas</small>
+              </div>
             </div>
           </div>
-          <div className="stamp">
-            <span>NIAT BAIK · ARAH BAIK ·</span>
-            <Icon name="northeast" size={42} />
-          </div>
-          <span className="visual-dot">✳</span>
         </div>
       </section>
       <div className="ticker" aria-hidden="true">
@@ -154,15 +159,19 @@ export function Home() {
               className="category-card"
               key={name}
             >
-              <img src={`/assets/${img}`} alt="" loading="lazy" />
-              <span className="category-num">
-                {n} / {name === "Masjid" ? "Masjid & musala" : name}
-              </span>
-              <div>
+              <div className="category-image">
+                <img src={`/assets/${img}`} alt="" loading="lazy" />
+                <span className="category-num">
+                  {name === "Masjid" ? "Masjid & musala" : name}
+                </span>
+              </div>
+              <div className="category-content">
+                <span className="category-index">{n} / ARAH KEBAIKAN</span>
                 <h3>{title}</h3>
                 <p>{description}</p>
-                <span className="circle white">
-                  <Icon name="northeast" />
+                <span className="category-link">
+                  Jelajahi {name.toLowerCase()}{" "}
+                  <Icon name="northeast" size={18} />
                 </span>
               </div>
             </Link>

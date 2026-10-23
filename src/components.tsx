@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type ReactNode } from "react";
+import React, { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation, Navigate } from "react-router-dom";
 import { useAuth, supabase, useToast, mediaUrl, api } from "./lib";
 import type { Organization } from "../shared/schema";
@@ -68,13 +68,13 @@ export function Logo() {
     <Link to="/" className="logo" aria-label="ArahBaik — Beranda">
       <img src="/assets/brand.svg" alt="" />
       Arah<span>Baik</span>
-      <i>®</i>
     </Link>
   );
 }
 export function Layout({ children }: { children: ReactNode }) {
   const { user, admin, unavailable } = useAuth();
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
   const location = useLocation();
   useEffect(() => {
     setOpen(false);
@@ -84,10 +84,23 @@ export function Layout({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!open) return;
     const key = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    const outside = (e: Event) => {
+      if (e.target instanceof Element && !e.target.closest(".site-header"))
+        setOpen(false);
     };
     window.addEventListener("keydown", key);
-    return () => window.removeEventListener("keydown", key);
+    document.addEventListener("pointerdown", outside);
+    document.addEventListener("focusin", outside);
+    return () => {
+      window.removeEventListener("keydown", key);
+      document.removeEventListener("pointerdown", outside);
+      document.removeEventListener("focusin", outside);
+    };
   }, [open]);
   return (
     <>
@@ -102,10 +115,11 @@ export function Layout({ children }: { children: ReactNode }) {
           Inisiatif oleh <b>AXURA TEAM</b> <Icon name="northeast" size={12} />
         </span>
       </div>
-      <header>
+      <header className="site-header">
         <div className="container nav">
           <Logo />
           <button
+            ref={menuButton}
             className="mobile-toggle icon-btn"
             onClick={() => setOpen(!open)}
             aria-label={open ? "Tutup navigasi" : "Buka navigasi"}
@@ -123,6 +137,9 @@ export function Layout({ children }: { children: ReactNode }) {
               <Link to={user ? "/dashboard" : "/akun"}>
                 {user ? "Dashboard" : "Masuk"}
               </Link>
+              <Link className="btn small" to="/dashboard">
+                Daftarkan tempat <Icon name="northeast" size={16} />
+              </Link>
             </div>
           </nav>
           <div className="nav-actions">
@@ -135,7 +152,9 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
         </div>
       </header>
-      <main id="main">{children}</main>
+      <main id="main" tabIndex={-1}>
+        {children}
+      </main>
       {unavailable && (
         <div className="container">
           <div className="service-note">

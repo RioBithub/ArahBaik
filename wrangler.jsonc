@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "arahbaik",
+  "keep_vars": true,
   "main": "worker/index.ts",
   "compatibility_date": "2026-10-22",
   "assets": {
